@@ -1,79 +1,82 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presupuesto</title>
-    <link rel="stylesheet" href="css/estilos.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Presupuesto</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:,">
 </head>
+
 <body>
+  <div class="container">
 
-    <div class="container">
+    <!-- Presupuesto disponible -->
+    <h1 class="presupuesto-titulo">Presupuesto Disponible</h1>
+    <div id="presupuesto-disponible" class="presupuesto-caja">0</div>
 
-        <!-- Presupuesto disponible -->
-        <h1 class="presupuesto-titulo">Presupuesto Disponible</h1>
-        <div id="presupuesto-disponible" class="presupuesto-caja">0</div>
-
-        <!-- Totales -->
-        <div class="totales">
-            <div class="total-box ingreso">
-                <span>Ingresos Totales</span>
-                <strong id="total-ingresos">0</strong>
-            </div>
-            <div class="total-box egreso">
-                <span>Egresos Totales</span>
-                <strong id="total-egresos">0</strong>
-            </div>
-        </div>
-
-        <!-- Formulario -->
-        <form id="formulario" class="formulario">
-            <select id="tipo">
-                <option value="ingreso">Ingreso</option>
-                <option value="egreso">Egreso</option>
-            </select>
-
-            <input type="text" id="nombre" placeholder="Nombre" required>
-            <input type="number" id="valor" placeholder="Valor" required>
-
-            <button type="submit">Agregar</button>
-        </form>
-
-        <!-- Listado -->
-        <div class="listas">
-
-            <div class="columna">
-                <h2>Ingresos</h2>
-                <ul id="lista-ingresos" class="lista"></ul>
-            </div>
-
-            <div class="columna">
-                <h2>Egresos</h2>
-                <ul id="lista-egresos" class="lista"></ul>
-            </div>
-
-        </div>
-
-        <button id="modo-toggle" class="modo-btn">Modo Oscuro</button>
-
-        <div class="grafico-box">
-            <canvas id="grafico"></canvas>
-        </div>
-
-        <div class="filtros">
-            <h3>Filtrar por fecha</h3>
-            <div class="filtro-linea">
-                <input type="date" id="desde">
-                <input type="date" id="hasta">
-                <button id="aplicar-filtro">Aplicar</button>
-                <button id="limpiar-filtro">Limpiar</button>
-            </div>
-        </div>
-
+    <!-- Totales -->
+    <div class="totales">
+      <div class="total-box ingreso">
+        <span>Ingresos Totales</span>
+        <strong id="total-ingresos">0</strong>
+      </div>
+      <div class="total-box egreso">
+        <span>Egresos Totales</span>
+        <strong id="total-egresos">0</strong>
+      </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script type="module" src="js/app.js"></script>
+
+    <!-- Formulario -->
+    <form id="formulario" class="formulario">
+      <select id="tipo">
+        <option value="ingreso">Ingreso</option>
+        <option value="egreso">Egreso</option>
+      </select>
+      <input type="text" id="nombre" placeholder="Nombre" required>
+      <input type="number" id="valor" placeholder="Valor" required>
+      <button type="submit">Agregar</button>
+    </form>
+
+    <!-- Listas -->
+    <div class="listas">
+      <div class="columna">
+        <h2>Ingresos</h2>
+        <ul id="lista-ingresos" class="lista"></ul>
+      </div>
+      <div class="columna">
+        <h2>Egresos</h2>
+        <ul id="lista-egresos" class="lista"></ul>
+      </div>
+    </div>
+
+    <!-- 👇 GRÁFICA (AQUÍ DEBE IR) -->
+    <div class="grafico-box">
+      <h3 class="titulo-grafica">Resumen financiero</h3>
+      <canvas id="budgetChart"></canvas>
+    </div>
+
+    <!-- Filtros -->
+    <div class="filtros">
+      <h3>Filtrar por fecha</h3>
+      <div class="filtro-linea">
+        <input type="date" id="desde">
+        <input type="date" id="hasta">
+        <button id="aplicar-filtro">Aplicar</button>
+        <button id="limpiar-filtro">Limpiar</button>
+      </div>
+    </div>
+
+    <button id="modo-toggle" class="modo-btn">Modo Oscuro</button>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script type="module" src="js/app.js"></script>
 </body>
 </html>
+
+</body>
+</html>
+
