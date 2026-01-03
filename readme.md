@@ -1,4 +1,4 @@
-# Expense Tracker 💸
+# presupuesto
 
 Aplicación web para gestionar ingresos y egresos, visualizar balance
 disponible y analizar datos mediante gráficos.
@@ -28,3 +28,4 @@ disponible y analizar datos mediante gráficos.
 - Delegación de eventos
 - Refactor a estado único
 - Arquitectura escalable
+
