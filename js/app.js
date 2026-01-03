@@ -1,6 +1,6 @@
 import { getTransacciones, saveTransacciones } from "./storage.js";
 import {actualizarTotalesUI,renderizarListasUI} from "./ui.js";
-import { actualizarGrafico } from "./chart.js";
+import { actualizarGrafica } from "./chart.js";
 
 let transacciones = getTransacciones();
 
@@ -17,6 +17,13 @@ function getEgresos() {
   return transacciones.filter(t => t.tipo === "egreso");
 }
 
+function filtrarPorFecha(transacciones, desde, hasta) {
+  return transacciones.filter(t => {
+    if (desde && t.fecha < desde) return false;
+    if (hasta && t.fecha > hasta) return false;
+    return true;
+  });
+}
 
 // --- Borrar ítem ---
 function borrarItem(id) {
@@ -56,7 +63,7 @@ formulario.addEventListener("submit", e => {
 // --- Inicialización ---
 actualizarTotalesUI(getIngresos(), getEgresos());
 renderizarListasUI(getIngresos(), getEgresos());
-actualizarGrafico(getIngresos(), getEgresos());
+actualizarGrafica(getIngresos(), getEgresos());
 actualizarTodo();
 
 // --- MODO OSCURO ---
@@ -74,8 +81,14 @@ btnModo.addEventListener("click", () => {
 });
 
 document.getElementById("aplicar-filtro").addEventListener("click", () => {
-    const desde = document.getElementById("desde").value;
-    const hasta = document.getElementById("hasta").value;
+  const desde = document.getElementById("desde").value;
+  const hasta = document.getElementById("hasta").value;
+
+  const filtradas = filtrarPorFecha(transacciones, desde, hasta);
+
+  renderizarListasUI(filtradas);
+});
+
 
     function estaEnRango(fecha) {
         if (desde && fecha < desde) return false;
@@ -83,25 +96,11 @@ document.getElementById("aplicar-filtro").addEventListener("click", () => {
         return true;
     }
 
-    listaIngresos.innerHTML = "";
-    ingresos.filter(i => estaEnRango(i.fecha)).forEach((item, index) => {
-        const li = document.createElement("li");
-        li.textContent = `${item.nombre} — +${item.valor} (${item.fecha})`;
-        listaIngresos.appendChild(li);
-    });
-
-    listaEgresos.innerHTML = "";
-    egresos.filter(i => estaEnRango(i.fecha)).forEach((item, index) => {
-        const li = document.createElement("li");
-        li.textContent = `${item.nombre} — -${item.valor} (${item.fecha})`;
-        listaEgresos.appendChild(li);
-    });
-});
-
 document.getElementById("limpiar-filtro").addEventListener("click", () => {
     document.getElementById("desde").value = "";
     document.getElementById("hasta").value = "";
-    renderizarListasUI(getIngresos(), getEgresos());
+
+    actualizarTodo();
 
 });
 
@@ -117,6 +116,7 @@ function actualizarTodo() {
 
   actualizarTotalesUI(ingresos, egresos);
   renderizarListasUI(transacciones);
-  actualizarGrafico(ingresos, egresos);
+  actualizarGrafica(ingresos, egresos);
 }
+
 
