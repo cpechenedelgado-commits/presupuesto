@@ -14,7 +14,7 @@ disponible y analizar datos mediante gráficos.
 - Agregar y eliminar transacciones
 - Balance automático
 - Persistencia de datos
-- Gráfico de ingresos vs egresos
+- Gráfica de barras para visualizar ingreso y egresos
 - Modo oscuro
 
 ## Arquitectura
@@ -28,4 +28,7 @@ disponible y analizar datos mediante gráficos.
 - Delegación de eventos
 - Refactor a estado único
 - Arquitectura escalable
+- Integración de librerías externas (Chart.js)
+- Control del layout y comportamiento responsive de gráficos
+
 
