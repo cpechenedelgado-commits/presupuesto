@@ -1,40 +1,43 @@
-import { formatearMoneda } from "./utils.js";
+const ctx = document.getElementById("budgetChart").getContext("2d");
 
-const ctx = document.getElementById("grafico").getContext("2d");
-
-let grafico = new Chart(ctx, {
-  type: "doughnut",
+let budgetChart = new Chart(ctx, {
+  type: "bar",
   data: {
     labels: ["Ingresos", "Egresos"],
-    datasets: [{
-      data: [0, 0],
-      backgroundColor: ["#00c853", "#d50000"],
-      borderWidth: 0
-    }]
+    datasets: [
+      {
+        label: "Monto",
+        data: [0, 0],
+        backgroundColor: ["#4CAF50", "#F44336"]
+      }
+    ]
   },
   options: {
-    cutout: "60%",
-    plugins: {
-      legend: { position: "bottom" },
-      tooltip: {
-        callbacks: {
-          label(context) {
-            return formatearMoneda(context.raw);
-          }
-        }
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true
       }
     }
   }
 });
 
-export function actualizarGrafico(ingresos, egresos) {
-  const totalIngresos = ingresos.reduce((a, b) => a + b.valor, 0);
-  const totalEgresos = egresos.reduce((a, b) => a + b.valor, 0);
+export function actualizarGrafica(ingresos, egresos) {
+  const totalIngresos = ingresos.reduce(
+    (acc, item) => acc + item.valor,
+    0
+  );
 
-  grafico.data.datasets[0].data = [
+  const totalEgresos = egresos.reduce(
+    (acc, item) => acc + item.valor,
+    0
+  );
+
+  budgetChart.data.datasets[0].data = [
     totalIngresos,
-    totalEgresos
+    -totalEgresos // 👈 clave
   ];
 
-  grafico.update();
+  budgetChart.update();
 }
+
