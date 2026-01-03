@@ -1,0 +1,311 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f2f2f2;
+    color: #333;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.container {
+    width: 90%;
+    max-width: 700px;
+}
+
+.presupuesto-titulo {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 28px;
+}
+
+.presupuesto-caja {
+    background: #222;
+    /* color: #00ff88; */
+    text-align: center;
+    padding: 20px;
+    font-size: 40px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px #0004 inset;
+    transition: all 0.3s ease;
+}
+
+.presupuesto-caja.saldo-negativo {
+    background: linear-gradient(135deg, #ff6b6b, #d70000);
+    color: white;
+}
+
+.totales {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.total-box {
+    width: 48%;
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px #0002;
+    text-align: center;
+}
+
+.total-box.ingreso strong {
+    background: #e6f7ed;
+    color: #00b32d;
+}
+
+.total-box.egreso strong {
+    background: #fdecea;
+    color: #d70000;
+}
+
+.total-box span {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.formulario {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.formulario select,
+.formulario input,
+.formulario button {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.formulario button {
+    background: #222;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.formulario button:hover {
+    background: #444;
+}
+
+.listas {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.columna {
+    width: 50%;
+}
+
+.columna h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.lista {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px #0002;
+    min-height: 200px;
+    list-style: none;
+}
+
+.lista li {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.lista li:last-child {
+    border-bottom: none;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .totales, .listas {
+        flex-direction: column;
+    }
+
+    .total-box, .columna {
+        width: 100%;
+    }
+}
+
+.borrar {
+    float: right;
+    background: #ff3b3b;
+    color: white;
+    border: none;
+    padding: 3px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.borrar:hover {
+    background: #c40000;
+}
+
+.negativo {
+    color: #d70000;
+}
+
+.positivo {
+    color: #00b32d;
+}
+
+/* Botón modo oscuro */
+.modo-btn {
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background: #222;
+    color: #fff;
+    transition: 0.3s;
+}
+.modo-btn:hover {
+    background: #444;
+}
+
+/* MODO OSCURO */
+body.modo-oscuro {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+body.modo-oscuro .presupuesto-caja {
+    box-shadow: 0 8px 15px rgba(225, 28, 28, 0.5) inset;
+}
+
+body.modo-oscuro .total-box {
+    background: #1e1e1e;
+    color: #fff;
+}
+
+body.modo-oscuro .lista li {
+    background: #1b1b1b;
+}
+
+body.modo-oscuro .lista li:hover {
+    background: #333;
+}
+
+body.modo-oscuro button {
+    background: #333;
+    color: #fff;
+}
+
+body.modo-oscuro .grafico-box {
+    background: #1b1b1b;
+}
+
+
+.grafico-box {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filtros {
+    margin-bottom: 25px;
+}
+
+.filtro-linea {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filtro-linea input, .filtro-linea button {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.filtro-linea button {
+    cursor: pointer;
+    background: #222;
+    color: #fff;
+}
+
+body.modo-oscuro .filtro-linea input {
+    background: #222;
+    color: white;
+    border: 1px solid #555;
+}
+
+.lista li {
+    padding: 10px 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    background: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.4s ease;
+}
+
+.lista li:hover {
+    background: #e0f7fa;
+    transform: translateX(2px);
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.presupuesto-caja {
+    transition: background 0.4s, color 0.4s;
+}
+
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+button:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.empty {
+  text-align: center;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+button.borrar {
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+button.borrar:hover {
+  opacity: 1;
+}
+
