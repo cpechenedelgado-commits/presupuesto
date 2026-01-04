@@ -25,14 +25,12 @@ function filtrarPorFecha(transacciones, desde, hasta) {
   });
 }
 
-// --- Borrar ítem ---
 function borrarItem(id) {
   transacciones = transacciones.filter(t => t.id !== id);
   saveTransacciones(transacciones);
   actualizarTodo();
 }
 
-// --- Agregar nuevo ítem ---
 formulario.addEventListener("submit", e => {
   e.preventDefault();
 
@@ -60,19 +58,16 @@ formulario.addEventListener("submit", e => {
   formulario.reset();
 });
 
-// --- Inicialización ---
 actualizarTotalesUI(getIngresos(), getEgresos());
 renderizarListasUI(getIngresos(), getEgresos());
 actualizarGrafica(getIngresos(), getEgresos());
 actualizarTodo();
 
-// --- MODO OSCURO ---
 const btnModo = document.getElementById("modo-toggle");
 
 btnModo.addEventListener("click", () => {
     document.body.classList.toggle("modo-oscuro");
 
-    // Cambiar texto del botón
     if (document.body.classList.contains("modo-oscuro")) {
         btnModo.textContent = "Modo Claro";
     } else {
@@ -118,5 +113,6 @@ function actualizarTodo() {
   renderizarListasUI(transacciones);
   actualizarGrafica(ingresos, egresos);
 }
+
 
 
