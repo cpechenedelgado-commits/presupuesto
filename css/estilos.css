@@ -132,7 +132,6 @@ body {
     border-bottom: none;
 }
 
-/* Responsivo */
 @media (max-width: 600px) {
     .totales, .listas {
         flex-direction: column;
@@ -166,7 +165,6 @@ body {
     color: #00b32d;
 }
 
-/* Botón modo oscuro */
 .modo-btn {
     padding: 10px 20px;
     margin-bottom: 20px;
@@ -181,7 +179,6 @@ body {
     background: #444;
 }
 
-/* MODO OSCURO */
 body.modo-oscuro {
     background: #121212;
     color: #e0e0e0;
@@ -315,5 +312,6 @@ button.borrar {
 button.borrar:hover {
   opacity: 1;
 }
+
 
 
